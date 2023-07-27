@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid">
+    <main class="tm-main">
+        <!-- do smth -->
+        <div class="row tm-row">
+            <div class="col-12">
+                <center>
+                    <h1>Marco teórico </h1>
+                </center>
+                <p style="text-align: justify; color: black;"> La factorización QR es una herramienta matemática que
+                    descompone una matriz en una matriz ortogonal y una matriz triangular superior,
+                    y tiene múltiples aplicaciones prácticas en la resolución de sistemas de ecuaciones
+                    lineales, programación, cálculo de valores propios y aproximación por mínimos cuadrados.
+                    Debido a su importancia en la teoría y aplicación de las matemáticas,
+                    es una técnica fundamental en diversas áreas de la ciencia, ingeniería y tecnología.</p>
+                <p style="text-align: justify; color: black;"> Esta factorización es una descomposición matricial
+                    de una matriz A de dimensiones m x n en dos componentes: una matriz ortogonal Q de dimensión m x m y
+                    una matriz triangular superior R de dimensión m x n. Formalmente, la factorización QR de A se puede escribir como:</p>
+                <center><img src="{{url_for('static', filename='img/Captura.png')}}"></center>
+                <p style="text-align: justify; color: black;"> Esto implica que el producto escalar entre dos columnas de Q es siempre cero,
+                    lo que significa que los vectores correspondientes son ortogonales. Sin embargo, es importante señalar que
+                    este resultado es válido solo para la factorización QR y no necesariamente para todas las matrices ortogonales.</p>
+                <p style="text-align: justify; color: black;"> Con respecto al método de cálculo de la factorización QR, este se basa en el uso de la ortogonalidad
+                    de los vectores en una base de un espacio vectorial euclidiano. En términos generales, el procedimiento consta de los siguientes pasos:</p>
+                <ol>
+                    <li>Ortogonalización: se toma una matriz A y se realiza el procedimiento de Gram-Schmidt para obtener una base ortogonal Q.</li>
+                    <br>
+                    <center><img src="/static/img/paso1.png"></center>
+                    <br>
+                    <li>Triangularización: se forma una matriz R que representa las proyecciones de las columnas de A en la base ortogonal Q.</li>
+                    <br>
+                    <center><img src="/static/img/paso2.png"></center>
+                    <br>
+                    <li>Combinación: la matriz A se puede expresar como la multiplicación de Q y R, es decir, A = QR.</li>
+                    <br>
+                    <center><img src="/static/img/Captura.png"></center>
+                </ol>
+            </div>
+        </div>
+        <footer class="row tm-row">
+            <hr class="col-12">
+            <div class="col-md-6 col-12 tm-color-gray">
+                Source: <a rel="nofollow" target="_parent" href="#" class="tm-external-link">GitHub</a>
+            </div>
+            <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+                Copyright 2023 Grupo 2 Álgebra lineal
+            </div>
+        </footer>
+    </main>
+</div>
+{% endblock %}

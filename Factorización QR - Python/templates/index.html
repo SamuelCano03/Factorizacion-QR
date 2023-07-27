@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container-fluid">
+    <main class="tm-main">
+        <!-- Search form -->
+        <div class="row tm-row">
+            <div class="col-12">
+                <form method="post" class="form-inline tm-mb-80 tm-search-form" action="/index">
+                    <input id="ipt" class="form-control tm-search-input" name="myquery" type="number" autocomplete="off"
+                        placeholder="Orden de la matriz..." aria-label="Search" min="4" max="10" required
+                        oninvalid="if(this.value==''){this.setCustomValidity('Rellena el campo');}else{this.setCustomValidity('Solo números del 4 al 10')} this.value='';"
+                        oninput="this.setCustomValidity('')" />
+                    <button class="tm-search-button" type="submit">
+                        <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="row tm-row">
+            <h5>El orden debe ser un entero entre 4 y 10</h5>
+            <br>
+        </div>
+        {%if data.result %}
+        {%if (data.result|int) >= 4 and (data.result|int) <= 10 %} <div class="row tm-row">
+            <h2>Matriz generada</h2>
+</div>
+<form id="factorizar" method="post" action="/calculate">
+<div class="row tm-row">
+    <table id="myTable" border="0" style="width:50%">
+        {%for i in range(data.result|int)%}
+        <tr>
+            {%for j in range(data.result|int)%}
+            <td style="border:2px solid; text-align: center; width: 25px" >
+                <input border="none" type="text" name="value-{{i}}-{{j}}" value="{{values[i][j]}}" style="outline: none; border:0; align-items: center; width: 30px">
+            </td>
+            {%endfor%}
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+<br>
+{%if Q == [] %}
+    <input type="submit" , value="Factorizar">
+</form>
+{%endif%}
+
+{% endif%}
+{% endif%}
+{%if Q != [] %}
+{%if (data.result|int) >= 4 and (data.result|int) <= 10 %} <div class="mb-3">
+    <div class="row tm-row">
+        <h2>Matriz Q</h2>
+    </div>
+    <div class="row tm-row mb-3">
+        <table id="Q matrix" border="0" style="width: 50%">
+            {%for i in range(data.result|int)%}
+            <tr>
+                {%for j in range(data.result|int)%}
+                <td style="text-align: center; border: 2px solid; width:25px ">
+                    {{Q[i][j]}}
+                </td>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <div class="row tm-row">
+        <h2>Matriz R</h2>
+    </div>
+    <div class="row tm-row mb-3">
+        <table id="R matrix" border="0" style="width: 50%" >
+            {%for i in range(data.result|int)%}
+            <tr>
+                {%for j in range(data.result|int)%}
+                <td style="text-align: center; border: 2px solid; width:25px ; ">
+                    {{R[i][j]}}
+                </td>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+    </div>
+    <form id="regresar">
+        <a class="btn btn-danger me-3" href="{{ url_for('index') }}">Regresar</a>
+    </form>
+    {%endif%}
+    {%endif%}
+    <footer class="row tm-row ">
+        <hr class="col-12">
+        <div class="col-md-6 col-12 tm-color-gray">
+            Source: <a rel="nofollow" target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" class="tm-external-link">GitHub</a>
+        </div>
+        <div class="col-md-6 col-12 tm-color-gray tm-copyright">
+            Copyright 2023 Grupo 2 Álgebra lineal
+        </div>
+    </footer>
+    </main>
+    </div>
+
+    {% endblock %}
